@@ -23,8 +23,8 @@ const allowedOrigins = [
     'http://localhost',
     'http://localhost:8080',
     'http://localhost:8100',
-    'https://firebase.ngx',
-    'http://firebase.ngx'
+    'https:/firechat.ngx',
+    'http://firechat.ngx'
   ];
   
   // Reflect the origin if it's in the allowed list or not defined (cURL, Postman, etc.)
