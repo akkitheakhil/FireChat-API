@@ -23,7 +23,7 @@ const allowedOrigins = [
     'http://localhost',
     'http://localhost:8080',
     'http://localhost:8100',
-    'https:/firechat.ngx',
+    'https://firechat.ngx',
     'http://firechat.ngx'
   ];
   
