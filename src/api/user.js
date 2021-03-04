@@ -200,7 +200,7 @@ router.get('/contacts', async (req, res, next) => {
 
 // Send Message
 router.post('/sendMessage', async (req, res, next) => {
-  let { message, recieverId, recieverEmail } = req.body;
+  let { message, recieverId, recieverEmail, recieverDisplayName } = req.body;
   try {
     const currentUser = req.currentUser;
     const allReq = await contacts.findOne({ email: currentUser.email });
@@ -208,7 +208,7 @@ router.post('/sendMessage', async (req, res, next) => {
     const isUserExist = await contacts.findOne({ email: recieverEmail });
     const isUsersFriend = isUserExist.contacts.find(contact => contact.email === currentUser.email);
     if(!isFriend || !isUsersFriend) throw Error('You are not connected to send messages');
-    const createMessage = { message, recieverId, recieverEmail, senderId: currentUser.uid, senderEmail: currentUser.email, senderDisplayName: currentUser.name, timeStamp: new Date() }
+    const createMessage = { message, recieverId, recieverEmail, recieverDisplayName, senderId: currentUser.uid, senderEmail: currentUser.email, senderDisplayName: currentUser.name,  timeStamp: new Date() }
     pusher.trigger('private-encrypted-'+recieverId, "recieve-messages", createMessage);
     res.json(createMessage);
   } catch (err) {
